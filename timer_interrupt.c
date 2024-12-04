@@ -1,4 +1,4 @@
-#include "lpit_timer.h"
+#include "timer_interrupt.h"
 
 // Define constants for LPIT configuration
 #define LPIT_CHANNEL (1)                 // Use Timer Channel 1
