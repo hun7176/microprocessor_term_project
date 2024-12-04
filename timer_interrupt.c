@@ -1,7 +1,7 @@
 #include "lpit_timer.h"
 
 // Define constants for LPIT configuration
-#define LPIT_CHANNEL (0)                 // Use Timer Channel 0
+#define LPIT_CHANNEL (1)                 // Use Timer Channel 1
 
 void LPIT_Init(uint32_t interval_ms)
 {
