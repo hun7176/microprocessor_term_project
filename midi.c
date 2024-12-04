@@ -15,7 +15,7 @@ void MIDI_NoteOn(uint8_t note) {
   data[2] = 64;
 
   for (i = 0; i < 3; i++)
-    LPUART1_transmit_int(data[i]);
+    LPUART1_transmit_char(data[i]);
 }
 
 void MIDI_NoteOff(uint8_t note) {

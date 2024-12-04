@@ -24,9 +24,9 @@ int main(void)
   while(1){
 		key = KeyScan();
     
-		LPUART1_transmit_int(key);
-		LPUART1_transmit_char('\r');  	
-		LPUART1_transmit_char('\n');
+	//	LPUART1_transmit_int(key);
+	//	LPUART1_transmit_char('\r');  	
+	//	LPUART1_transmit_char('\n');
 
     if (key != 100 && prevkey != key)
       MIDI_NoteOn(key);
