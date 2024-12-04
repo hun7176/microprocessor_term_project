@@ -1,7 +1,7 @@
 #include "buzzer.h"
 
 // Define the GPIO pin for the buzzer
-#define BUZZER_PIN (15)              // PTD15
+#define BUZZER_PIN (14)              // PTD14
 #define BUZZER_PORT (PORTD)
 #define BUZZER_GPIO (PTD)
 
