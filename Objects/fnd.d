@@ -1,4 +1,4 @@
-./objects/main.o: main.c \
+./objects/fnd.o: FND.c FND.h \
   C:\Keil_v5\ARM\PACK\Keil\S32_SDK_DFP\1.5.1\platform\devices\device_registers.h \
   C:\Keil_v5\ARM\PACK\Keil\S32_SDK_DFP\1.5.1\platform\devices\common\s32_core_cm4.h \
   C:\Keil_v5\ARM\PACK\Keil\S32_SDK_DFP\1.5.1\platform\devices\S32K144\include\S32K144.h \
@@ -6,4 +6,4 @@
   RTE\Device\S32K144HAxxxLHx\system_S32K144.h \
   C:\Keil_v5\ARM\PACK\Keil\S32_SDK_DFP\1.5.1\platform\devices\S32K144\include\S32K144_features.h \
   C:\Keil_v5\ARM\PACK\Keil\S32_SDK_DFP\1.5.1\platform\devices\devassert.h \
-  clocks_and_modes.h LPUART.h IO_Init.h IO_keypad.h midi.h FND.h
+  clocks_and_modes.h

@@ -6,6 +6,7 @@
 ".\objects\io_init.o"
 ".\objects\io_keypad.o"
 ".\objects\midi.o"
+".\objects\fnd.o"
 ".\objects\startup.o"
 ".\objects\startup_s32k144.o"
 ".\objects\system_s32k144.o"

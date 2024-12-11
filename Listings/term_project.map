@@ -12,10 +12,12 @@ Section Cross References
     main.o(.text.main) refers to io_keypad.o(.text.KeyScan_init) for KeyScan_init
     main.o(.text.main) refers to io_init.o(.text.PORT_init) for PORT_init
     main.o(.text.main) refers to lpuart.o(.text.LPUART1_init) for LPUART1_init
+    main.o(.text.main) refers to fnd.o(.text.FND_init) for FND_init
     main.o(.text.main) refers to io_keypad.o(.text.KeyScan) for KeyScan
     main.o(.text.main) refers to main.o(.bss.key) for key
     main.o(.text.main) refers to main.o(.bss.prevkey) for prevkey
     main.o(.text.main) refers to midi.o(.text.MIDI_NoteOn) for MIDI_NoteOn
+    main.o(.text.main) refers to fnd.o(.text.Seg_out) for Seg_out
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     adc.o(.ARM.exidx.text.ADC_init) refers to adc.o(.text.ADC_init) for [Anonymous Symbol]
     adc.o(.ARM.exidx.text.ADC_init_HWTrigger) refers to adc.o(.text.ADC_init_HWTrigger) for [Anonymous Symbol]
@@ -50,6 +52,16 @@ Section Cross References
     midi.o(.ARM.exidx.text.MIDI_NoteOn) refers to midi.o(.text.MIDI_NoteOn) for [Anonymous Symbol]
     midi.o(.text.MIDI_NoteOff) refers to lpuart.o(.text.LPUART1_transmit_int) for LPUART1_transmit_int
     midi.o(.ARM.exidx.text.MIDI_NoteOff) refers to midi.o(.text.MIDI_NoteOff) for [Anonymous Symbol]
+    fnd.o(.ARM.exidx.text.FND_init) refers to fnd.o(.text.FND_init) for [Anonymous Symbol]
+    fnd.o(.text.Seg_out) refers to fnd.o(.bss.num3) for num3
+    fnd.o(.text.Seg_out) refers to fnd.o(.bss.num2) for num2
+    fnd.o(.text.Seg_out) refers to fnd.o(.bss.num1) for num1
+    fnd.o(.text.Seg_out) refers to fnd.o(.bss.num0) for num0
+    fnd.o(.text.Seg_out) refers to fnd.o(.bss.j) for j
+    fnd.o(.text.Seg_out) refers to fnd.o(.data.FND_SEL) for FND_SEL
+    fnd.o(.text.Seg_out) refers to fnd.o(.data.FND_DATA) for FND_DATA
+    fnd.o(.text.Seg_out) refers to clocks_and_modes.o(.text.delay_us) for delay_us
+    fnd.o(.ARM.exidx.text.Seg_out) refers to fnd.o(.text.Seg_out) for [Anonymous Symbol]
     startup.o(.text.init_data_bss) refers to startup_s32k144.o(.text) for __RAM_VECTOR_TABLE_SIZE
     startup.o(.text.init_data_bss) refers to startup.o(.rodata.s_vectors) for s_vectors
     startup.o(.ARM.exidx.text.init_data_bss) refers to startup.o(.text.init_data_bss) for [Anonymous Symbol]
@@ -232,6 +244,10 @@ Removing Unused input sections from the image.
     Removing midi.o(.ARM.exidx.text.MIDI_NoteOn), (8 bytes).
     Removing midi.o(.text.MIDI_NoteOff), (76 bytes).
     Removing midi.o(.ARM.exidx.text.MIDI_NoteOff), (8 bytes).
+    Removing fnd.o(.text), (0 bytes).
+    Removing fnd.o(.ARM.exidx.text.FND_init), (8 bytes).
+    Removing fnd.o(.ARM.exidx.text.Seg_out), (8 bytes).
+    Removing fnd.o(.bss.num), (4 bytes).
     Removing startup.o(.text), (0 bytes).
     Removing startup.o(.ARM.exidx.text.init_data_bss), (8 bytes).
     Removing system_s32k144.o(.text), (0 bytes).
@@ -240,7 +256,7 @@ Removing Unused input sections from the image.
     Removing system_s32k144.o(.text.SystemSoftwareReset), (48 bytes).
     Removing system_s32k144.o(.ARM.exidx.text.SystemSoftwareReset), (8 bytes).
 
-49 unused section(s) (total 933 bytes) removed from the image.
+53 unused section(s) (total 953 bytes) removed from the image.
 
 ==============================================================================
 
@@ -305,6 +321,7 @@ Image Symbol Table
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
     ADC.c                                    0x00000000   Number         0  adc.o ABSOLUTE
+    FND.c                                    0x00000000   Number         0  fnd.o ABSOLUTE
     IO_Init.c                                0x00000000   Number         0  io_init.o ABSOLUTE
     IO_keypad.c                              0x00000000   Number         0  io_keypad.o ABSOLUTE
     LPUART.c                                 0x00000000   Number         0  lpuart.o ABSOLUTE
@@ -376,24 +393,26 @@ Image Symbol Table
     .text                                    0x00000592   Section        2  use_no_semi.o(.text)
     .text                                    0x00000594   Section        0  indicate_semi.o(.text)
     .text                                    0x00000594   Section        0  sys_exit.o(.text)
-    [Anonymous Symbol]                       0x000005a0   Section        0  io_keypad.o(.text.KeyScan)
-    [Anonymous Symbol]                       0x00000758   Section        0  io_keypad.o(.text.KeyScan_init)
-    [Anonymous Symbol]                       0x000007e8   Section        0  clocks_and_modes.o(.text.LPIT0_init)
-    [Anonymous Symbol]                       0x0000083c   Section        0  lpuart.o(.text.LPUART1_init)
-    [Anonymous Symbol]                       0x00000874   Section        0  lpuart.o(.text.LPUART1_transmit_char)
-    [Anonymous Symbol]                       0x000008a8   Section        0  midi.o(.text.MIDI_NoteOn)
-    [Anonymous Symbol]                       0x000008f8   Section        0  clocks_and_modes.o(.text.NormalRUNmode_80MHz)
-    [Anonymous Symbol]                       0x00000934   Section        0  io_init.o(.text.PORT_init)
-    [Anonymous Symbol]                       0x00000968   Section        0  clocks_and_modes.o(.text.SOSC_init_8MHz)
-    [Anonymous Symbol]                       0x000009bc   Section        0  clocks_and_modes.o(.text.SPLL_init_160MHz)
-    [Anonymous Symbol]                       0x00000a40   Section        0  system_s32k144.o(.text.SystemCoreClockUpdate)
-    [Anonymous Symbol]                       0x00000b40   Section        0  system_s32k144.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x00000b94   Section        0  io_init.o(.text.WDOG_disable)
-    [Anonymous Symbol]                       0x00000bc4   Section        0  clocks_and_modes.o(.text.delay_us)
-    [Anonymous Symbol]                       0x00000c04   Section        0  startup.o(.text.init_data_bss)
-    [Anonymous Symbol]                       0x00000ca4   Section        0  main.o(.text.main)
-    $v0                                      0x00000d26   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$fpinit                             0x00000d26   Section       26  fpinit.o(x$fpl$fpinit)
+    [Anonymous Symbol]                       0x000005a0   Section        0  fnd.o(.text.FND_init)
+    [Anonymous Symbol]                       0x00000638   Section        0  io_keypad.o(.text.KeyScan)
+    [Anonymous Symbol]                       0x00000ad4   Section        0  io_keypad.o(.text.KeyScan_init)
+    [Anonymous Symbol]                       0x00000bc0   Section        0  clocks_and_modes.o(.text.LPIT0_init)
+    [Anonymous Symbol]                       0x00000c14   Section        0  lpuart.o(.text.LPUART1_init)
+    [Anonymous Symbol]                       0x00000c4c   Section        0  lpuart.o(.text.LPUART1_transmit_char)
+    [Anonymous Symbol]                       0x00000c80   Section        0  midi.o(.text.MIDI_NoteOn)
+    [Anonymous Symbol]                       0x00000cd0   Section        0  clocks_and_modes.o(.text.NormalRUNmode_80MHz)
+    [Anonymous Symbol]                       0x00000d0c   Section        0  io_init.o(.text.PORT_init)
+    [Anonymous Symbol]                       0x00000d40   Section        0  clocks_and_modes.o(.text.SOSC_init_8MHz)
+    [Anonymous Symbol]                       0x00000d94   Section        0  clocks_and_modes.o(.text.SPLL_init_160MHz)
+    [Anonymous Symbol]                       0x00000e18   Section        0  fnd.o(.text.Seg_out)
+    [Anonymous Symbol]                       0x00000fd4   Section        0  system_s32k144.o(.text.SystemCoreClockUpdate)
+    [Anonymous Symbol]                       0x000010d4   Section        0  system_s32k144.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x00001128   Section        0  io_init.o(.text.WDOG_disable)
+    [Anonymous Symbol]                       0x00001158   Section        0  clocks_and_modes.o(.text.delay_us)
+    [Anonymous Symbol]                       0x00001198   Section        0  startup.o(.text.init_data_bss)
+    [Anonymous Symbol]                       0x00001238   Section        0  main.o(.text.main)
+    $v0                                      0x000012c8   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fpinit                             0x000012c8   Section       26  fpinit.o(x$fpl$fpinit)
 
     Global Symbols
 
@@ -434,7 +453,7 @@ Image Symbol Table
     _terminate_alloc                          - Undefined Weak Reference
     _terminate_user_alloc                     - Undefined Weak Reference
     _terminateio                              - Undefined Weak Reference
-    Image$$RW_m_data$$Length                 0x00000004   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_m_data$$Length                 0x0000003c   Number         0  anon$$obj.o ABSOLUTE
     Image$$VECTOR_ROM$$Length                0x00000230   Number         0  anon$$obj.o ABSOLUTE
     Image$$VECTOR_ROM$$Limit                 0x00000230   Number         0  anon$$obj.o ABSOLUTE
     Image$$ER_m_text_const$$Base             0x00000410   Number         0  anon$$obj.o ABSOLUTE
@@ -649,44 +668,53 @@ Image Symbol Table
     __use_no_semihosting_swi                 0x00000593   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x00000595   Thumb Code     0  indicate_semi.o(.text)
     _sys_exit                                0x00000595   Thumb Code     8  sys_exit.o(.text)
-    KeyScan                                  0x000005a1   Thumb Code   440  io_keypad.o(.text.KeyScan)
-    KeyScan_init                             0x00000759   Thumb Code   142  io_keypad.o(.text.KeyScan_init)
-    LPIT0_init                               0x000007e9   Thumb Code    84  clocks_and_modes.o(.text.LPIT0_init)
-    LPUART1_init                             0x0000083d   Thumb Code    56  lpuart.o(.text.LPUART1_init)
-    LPUART1_transmit_char                    0x00000875   Thumb Code    52  lpuart.o(.text.LPUART1_transmit_char)
-    MIDI_NoteOn                              0x000008a9   Thumb Code    78  midi.o(.text.MIDI_NoteOn)
-    NormalRUNmode_80MHz                      0x000008f9   Thumb Code    60  clocks_and_modes.o(.text.NormalRUNmode_80MHz)
-    PORT_init                                0x00000935   Thumb Code    50  io_init.o(.text.PORT_init)
-    SOSC_init_8MHz                           0x00000969   Thumb Code    84  clocks_and_modes.o(.text.SOSC_init_8MHz)
-    SPLL_init_160MHz                         0x000009bd   Thumb Code   132  clocks_and_modes.o(.text.SPLL_init_160MHz)
-    SystemCoreClockUpdate                    0x00000a41   Thumb Code   254  system_s32k144.o(.text.SystemCoreClockUpdate)
-    SystemInit                               0x00000b41   Thumb Code    82  system_s32k144.o(.text.SystemInit)
-    WDOG_disable                             0x00000b95   Thumb Code    48  io_init.o(.text.WDOG_disable)
-    delay_us                                 0x00000bc5   Thumb Code    62  clocks_and_modes.o(.text.delay_us)
-    init_data_bss                            0x00000c05   Thumb Code   160  startup.o(.text.init_data_bss)
-    main                                     0x00000ca5   Thumb Code   130  main.o(.text.main)
-    _fp_init                                 0x00000d27   Thumb Code    26  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x00000d3f   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x00000d3f   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    Region$$Table$$Base                      0x00000d40   Number         0  anon$$obj.o(Region$$Table)
-    Image$$ER_m_text$$Limit                  0x00000d60   Number         0  anon$$obj.o ABSOLUTE
-    Region$$Table$$Limit                     0x00000d60   Number         0  anon$$obj.o(Region$$Table)
+    FND_init                                 0x000005a1   Thumb Code   150  fnd.o(.text.FND_init)
+    KeyScan                                  0x00000639   Thumb Code  1178  io_keypad.o(.text.KeyScan)
+    KeyScan_init                             0x00000ad5   Thumb Code   234  io_keypad.o(.text.KeyScan_init)
+    LPIT0_init                               0x00000bc1   Thumb Code    84  clocks_and_modes.o(.text.LPIT0_init)
+    LPUART1_init                             0x00000c15   Thumb Code    56  lpuart.o(.text.LPUART1_init)
+    LPUART1_transmit_char                    0x00000c4d   Thumb Code    52  lpuart.o(.text.LPUART1_transmit_char)
+    MIDI_NoteOn                              0x00000c81   Thumb Code    78  midi.o(.text.MIDI_NoteOn)
+    NormalRUNmode_80MHz                      0x00000cd1   Thumb Code    60  clocks_and_modes.o(.text.NormalRUNmode_80MHz)
+    PORT_init                                0x00000d0d   Thumb Code    50  io_init.o(.text.PORT_init)
+    SOSC_init_8MHz                           0x00000d41   Thumb Code    84  clocks_and_modes.o(.text.SOSC_init_8MHz)
+    SPLL_init_160MHz                         0x00000d95   Thumb Code   132  clocks_and_modes.o(.text.SPLL_init_160MHz)
+    Seg_out                                  0x00000e19   Thumb Code   442  fnd.o(.text.Seg_out)
+    SystemCoreClockUpdate                    0x00000fd5   Thumb Code   254  system_s32k144.o(.text.SystemCoreClockUpdate)
+    SystemInit                               0x000010d5   Thumb Code    82  system_s32k144.o(.text.SystemInit)
+    WDOG_disable                             0x00001129   Thumb Code    48  io_init.o(.text.WDOG_disable)
+    delay_us                                 0x00001159   Thumb Code    62  clocks_and_modes.o(.text.delay_us)
+    init_data_bss                            0x00001199   Thumb Code   160  startup.o(.text.init_data_bss)
+    main                                     0x00001239   Thumb Code   144  main.o(.text.main)
+    _fp_init                                 0x000012c9   Thumb Code    26  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x000012e1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x000012e1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    Region$$Table$$Base                      0x000012e4   Number         0  anon$$obj.o(Region$$Table)
+    Image$$ER_m_text$$Limit                  0x00001304   Number         0  anon$$obj.o ABSOLUTE
+    Region$$Table$$Limit                     0x00001304   Number         0  anon$$obj.o(Region$$Table)
     Image$$VECTOR_RAM$$Base                  0x1fff8000   Number         0  anon$$obj.o ABSOLUTE
+    FND_DATA                                 0x1fff8400   Data          40  fnd.o(.data.FND_DATA)
     Image$$RW_m_data$$Base                   0x1fff8400   Number         0  anon$$obj.o ABSOLUTE
-    SystemCoreClock                          0x1fff8400   Data           4  system_s32k144.o(.data.SystemCoreClock)
-    Image$$RW_m_code$$Base                   0x1fff8404   Number         0  anon$$obj.o ABSOLUTE
-    Image$$RW_m_code$$Limit                  0x1fff8404   Number         0  anon$$obj.o ABSOLUTE
-    Image$$RW_m_data$$Limit                  0x1fff8404   Number         0  anon$$obj.o ABSOLUTE
+    FND_SEL                                  0x1fff8428   Data          16  fnd.o(.data.FND_SEL)
+    SystemCoreClock                          0x1fff8438   Data           4  system_s32k144.o(.data.SystemCoreClock)
+    Image$$RW_m_code$$Base                   0x1fff843c   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_m_code$$Limit                  0x1fff843c   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_m_data$$Limit                  0x1fff843c   Number         0  anon$$obj.o ABSOLUTE
     Dtime                                    0x20000000   Data           4  io_keypad.o(.bss.Dtime)
     Image$$RW_m_custom_section$$Base         0x20000000   Number         0  anon$$obj.o ABSOLUTE
     Image$$RW_m_custom_section$$Limit        0x20000000   Number         0  anon$$obj.o ABSOLUTE
     Image$$RW_m_data_2$$ZI$$Base             0x20000000   Number         0  anon$$obj.o ABSOLUTE
-    key                                      0x20000004   Data           1  main.o(.bss.key)
-    lpit0_ch0_flag_counter                   0x20000008   Data           4  clocks_and_modes.o(.bss.lpit0_ch0_flag_counter)
-    prevkey                                  0x2000000c   Data           1  main.o(.bss.prevkey)
-    Image$$ARM_LIB_HEAP$$ZI$$Base            0x20000010   Number         0  anon$$obj.o ABSOLUTE
-    Image$$RW_m_data_2$$ZI$$Limit            0x20000010   Number         0  anon$$obj.o ABSOLUTE
-    Image$$ARM_LIB_HEAP$$ZI$$Limit           0x20000410   Number         0  anon$$obj.o ABSOLUTE
+    j                                        0x20000004   Data           4  fnd.o(.bss.j)
+    key                                      0x20000008   Data           1  main.o(.bss.key)
+    lpit0_ch0_flag_counter                   0x2000000c   Data           4  clocks_and_modes.o(.bss.lpit0_ch0_flag_counter)
+    num0                                     0x20000010   Data           4  fnd.o(.bss.num0)
+    num1                                     0x20000014   Data           4  fnd.o(.bss.num1)
+    num2                                     0x20000018   Data           4  fnd.o(.bss.num2)
+    num3                                     0x2000001c   Data           4  fnd.o(.bss.num3)
+    prevkey                                  0x20000020   Data           1  main.o(.bss.prevkey)
+    Image$$ARM_LIB_HEAP$$ZI$$Base            0x20000024   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_m_data_2$$ZI$$Limit            0x20000024   Number         0  anon$$obj.o ABSOLUTE
+    Image$$ARM_LIB_HEAP$$ZI$$Limit           0x20000424   Number         0  anon$$obj.o ABSOLUTE
     Image$$ARM_LIB_STACK$$Limit              0x20006c00   Number         0  anon$$obj.o ABSOLUTE
     Image$$ARM_LIB_STACK$$ZI$$Limit          0x20007000   Number         0  anon$$obj.o ABSOLUTE
 
@@ -698,113 +726,119 @@ Memory Map of the image
 
   Image Entry point : 0x00000419
 
-  Load Region LR_m_text (Base: 0x00000000, Size: 0x00000d64, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_m_text (Base: 0x00000000, Size: 0x00001340, Max: 0x00080000, ABSOLUTE)
 
     Execution Region VECTOR_ROM (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000230, Max: 0x00000400, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x00000230   Data   RO          114    RESET               startup_s32k144.o
+    0x00000000   0x00000000   0x00000230   Data   RO          133    RESET               startup_s32k144.o
 
 
     Execution Region ER_m_flash_config (Exec base: 0x00000400, Load base: 0x00000400, Size: 0x00000010, Max: 0x00000010, ABSOLUTE, FIXED)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000400   0x00000400   0x00000010   Data   RO          115    FlashConfig         startup_s32k144.o
+    0x00000400   0x00000400   0x00000010   Data   RO          134    FlashConfig         startup_s32k144.o
 
 
     Execution Region ER_m_text_const (Exec base: 0x00000410, Load base: 0x00000410, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000410   0x00000410   0x00000004   Data   RO          129    .rodata.SystemCoreClockUpdate.fircFreq  system_s32k144.o
-    0x00000414   0x00000414   0x00000004   Data   RO          107    .rodata.s_vectors   startup.o
+    0x00000410   0x00000410   0x00000004   Data   RO          148    .rodata.SystemCoreClockUpdate.fircFreq  system_s32k144.o
+    0x00000414   0x00000414   0x00000004   Data   RO          126    .rodata.s_vectors   startup.o
 
 
-    Execution Region ER_m_text (Exec base: 0x00000418, Load base: 0x00000418, Size: 0x00000948, Max: 0x0007fbf0, ABSOLUTE)
+    Execution Region ER_m_text (Exec base: 0x00000418, Load base: 0x00000418, Size: 0x00000eec, Max: 0x0007fbf0, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000418   0x00000418   0x00000008   Code   RO          138  * !!!main             c_w.l(__main.o)
-    0x00000420   0x00000420   0x0000005c   Code   RO          316    !!!scatter          c_w.l(__scatter.o)
-    0x0000047c   0x0000047c   0x0000001a   Code   RO          320    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000418   0x00000418   0x00000008   Code   RO          157  * !!!main             c_w.l(__main.o)
+    0x00000420   0x00000420   0x0000005c   Code   RO          335    !!!scatter          c_w.l(__scatter.o)
+    0x0000047c   0x0000047c   0x0000001a   Code   RO          339    !!handler_copy      c_w.l(__scatter_copy.o)
     0x00000496   0x00000496   0x00000002   PAD
-    0x00000498   0x00000498   0x00000002   Code   RO          317    !!handler_null      c_w.l(__scatter.o)
+    0x00000498   0x00000498   0x00000002   Code   RO          336    !!handler_null      c_w.l(__scatter.o)
     0x0000049a   0x0000049a   0x00000002   PAD
-    0x0000049c   0x0000049c   0x0000001c   Code   RO          322    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x000004b8   0x000004b8   0x00000002   Code   RO          170    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x000004ba   0x000004ba   0x00000004   Code   RO          180    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          183    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          185    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          188    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          190    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          192    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          195    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          197    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          199    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          201    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          203    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          205    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          207    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          209    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          211    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          213    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          215    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          219    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          221    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          223    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000000   Code   RO          225    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
-    0x000004be   0x000004be   0x00000002   Code   RO          226    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
-    0x000004c0   0x000004c0   0x00000002   Code   RO          255    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x000004c2   0x000004c2   0x00000000   Code   RO          267    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x000004c2   0x000004c2   0x00000000   Code   RO          269    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x000004c2   0x000004c2   0x00000000   Code   RO          272    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x000004c2   0x000004c2   0x00000000   Code   RO          275    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x000004c2   0x000004c2   0x00000000   Code   RO          277    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x000004c2   0x000004c2   0x00000000   Code   RO          280    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x000004c2   0x000004c2   0x00000002   Code   RO          281    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x000004c4   0x000004c4   0x00000000   Code   RO          140    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x000004c4   0x000004c4   0x00000000   Code   RO          142    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x000004c4   0x000004c4   0x00000004   Code   RO          156    .ARM.Collect$$rtentry$$00000007  c_w.l(__rtentry7.o)
-    0x000004c8   0x000004c8   0x00000000   Code   RO          144    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x000004c8   0x000004c8   0x00000004   Code   RO          145    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x000004cc   0x000004cc   0x00000000   Code   RO          147    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x000004cc   0x000004cc   0x00000008   Code   RO          148    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x000004d4   0x000004d4   0x00000004   Code   RO          157    .ARM.Collect$$rtentry$$00002718  c_w.l(__rtentry7.o)
-    0x000004d8   0x000004d8   0x00000002   Code   RO          178    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x000004da   0x000004da   0x00000000   Code   RO          235    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x000004da   0x000004da   0x00000004   Code   RO          236    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x000004de   0x000004de   0x00000006   Code   RO          237    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
-    0x000004e4   0x000004e4   0x0000009c   Code   RO          113    .text               startup_s32k144.o
-    0x00000580   0x00000580   0x00000012   Code   RO          163    .text               c_w.l(exit.o)
-    0x00000592   0x00000592   0x00000002   Code   RO          231    .text               c_w.l(use_no_semi.o)
-    0x00000594   0x00000594   0x00000000   Code   RO          233    .text               c_w.l(indicate_semi.o)
-    0x00000594   0x00000594   0x0000000c   Code   RO          245    .text               c_w.l(sys_exit.o)
-    0x000005a0   0x000005a0   0x000001b8   Code   RO           84    .text.KeyScan       io_keypad.o
-    0x00000758   0x00000758   0x0000008e   Code   RO           82    .text.KeyScan_init  io_keypad.o
-    0x000007e6   0x000007e6   0x00000002   PAD
-    0x000007e8   0x000007e8   0x00000054   Code   RO           39    .text.LPIT0_init    clocks_and_modes.o
-    0x0000083c   0x0000083c   0x00000038   Code   RO           51    .text.LPUART1_init  lpuart.o
-    0x00000874   0x00000874   0x00000034   Code   RO           53    .text.LPUART1_transmit_char  lpuart.o
-    0x000008a8   0x000008a8   0x0000004e   Code   RO           94    .text.MIDI_NoteOn   midi.o
-    0x000008f6   0x000008f6   0x00000002   PAD
-    0x000008f8   0x000008f8   0x0000003c   Code   RO           37    .text.NormalRUNmode_80MHz  clocks_and_modes.o
-    0x00000934   0x00000934   0x00000032   Code   RO           71    .text.PORT_init     io_init.o
-    0x00000966   0x00000966   0x00000002   PAD
-    0x00000968   0x00000968   0x00000054   Code   RO           33    .text.SOSC_init_8MHz  clocks_and_modes.o
-    0x000009bc   0x000009bc   0x00000084   Code   RO           35    .text.SPLL_init_160MHz  clocks_and_modes.o
-    0x00000a40   0x00000a40   0x000000fe   Code   RO          124    .text.SystemCoreClockUpdate  system_s32k144.o
-    0x00000b3e   0x00000b3e   0x00000002   PAD
-    0x00000b40   0x00000b40   0x00000052   Code   RO          122    .text.SystemInit    system_s32k144.o
-    0x00000b92   0x00000b92   0x00000002   PAD
-    0x00000b94   0x00000b94   0x00000030   Code   RO           73    .text.WDOG_disable  io_init.o
-    0x00000bc4   0x00000bc4   0x0000003e   Code   RO           41    .text.delay_us      clocks_and_modes.o
-    0x00000c02   0x00000c02   0x00000002   PAD
-    0x00000c04   0x00000c04   0x000000a0   Code   RO          105    .text.init_data_bss  startup.o
-    0x00000ca4   0x00000ca4   0x00000082   Code   RO            5    .text.main          main.o
-    0x00000d26   0x00000d26   0x0000001a   Code   RO          243    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x00000d40   0x00000d40   0x00000020   Data   RO          315    Region$$Table       anon$$obj.o
+    0x0000049c   0x0000049c   0x0000001c   Code   RO          341    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x000004b8   0x000004b8   0x00000002   Code   RO          189    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x000004ba   0x000004ba   0x00000004   Code   RO          199    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          202    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          204    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          207    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          209    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          211    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          214    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          216    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          218    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          220    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          222    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          224    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          226    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          228    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          230    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          232    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          234    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          238    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          240    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          242    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000000   Code   RO          244    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
+    0x000004be   0x000004be   0x00000002   Code   RO          245    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
+    0x000004c0   0x000004c0   0x00000002   Code   RO          274    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x000004c2   0x000004c2   0x00000000   Code   RO          286    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x000004c2   0x000004c2   0x00000000   Code   RO          288    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x000004c2   0x000004c2   0x00000000   Code   RO          291    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x000004c2   0x000004c2   0x00000000   Code   RO          294    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x000004c2   0x000004c2   0x00000000   Code   RO          296    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x000004c2   0x000004c2   0x00000000   Code   RO          299    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x000004c2   0x000004c2   0x00000002   Code   RO          300    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x000004c4   0x000004c4   0x00000000   Code   RO          159    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x000004c4   0x000004c4   0x00000000   Code   RO          161    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x000004c4   0x000004c4   0x00000004   Code   RO          175    .ARM.Collect$$rtentry$$00000007  c_w.l(__rtentry7.o)
+    0x000004c8   0x000004c8   0x00000000   Code   RO          163    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x000004c8   0x000004c8   0x00000004   Code   RO          164    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x000004cc   0x000004cc   0x00000000   Code   RO          166    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x000004cc   0x000004cc   0x00000008   Code   RO          167    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x000004d4   0x000004d4   0x00000004   Code   RO          176    .ARM.Collect$$rtentry$$00002718  c_w.l(__rtentry7.o)
+    0x000004d8   0x000004d8   0x00000002   Code   RO          197    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x000004da   0x000004da   0x00000000   Code   RO          254    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x000004da   0x000004da   0x00000004   Code   RO          255    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x000004de   0x000004de   0x00000006   Code   RO          256    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x000004e4   0x000004e4   0x0000009c   Code   RO          132    .text               startup_s32k144.o
+    0x00000580   0x00000580   0x00000012   Code   RO          182    .text               c_w.l(exit.o)
+    0x00000592   0x00000592   0x00000002   Code   RO          250    .text               c_w.l(use_no_semi.o)
+    0x00000594   0x00000594   0x00000000   Code   RO          252    .text               c_w.l(indicate_semi.o)
+    0x00000594   0x00000594   0x0000000c   Code   RO          264    .text               c_w.l(sys_exit.o)
+    0x000005a0   0x000005a0   0x00000096   Code   RO          105    .text.FND_init      fnd.o
+    0x00000636   0x00000636   0x00000002   PAD
+    0x00000638   0x00000638   0x0000049a   Code   RO           84    .text.KeyScan       io_keypad.o
+    0x00000ad2   0x00000ad2   0x00000002   PAD
+    0x00000ad4   0x00000ad4   0x000000ea   Code   RO           82    .text.KeyScan_init  io_keypad.o
+    0x00000bbe   0x00000bbe   0x00000002   PAD
+    0x00000bc0   0x00000bc0   0x00000054   Code   RO           39    .text.LPIT0_init    clocks_and_modes.o
+    0x00000c14   0x00000c14   0x00000038   Code   RO           51    .text.LPUART1_init  lpuart.o
+    0x00000c4c   0x00000c4c   0x00000034   Code   RO           53    .text.LPUART1_transmit_char  lpuart.o
+    0x00000c80   0x00000c80   0x0000004e   Code   RO           94    .text.MIDI_NoteOn   midi.o
+    0x00000cce   0x00000cce   0x00000002   PAD
+    0x00000cd0   0x00000cd0   0x0000003c   Code   RO           37    .text.NormalRUNmode_80MHz  clocks_and_modes.o
+    0x00000d0c   0x00000d0c   0x00000032   Code   RO           71    .text.PORT_init     io_init.o
+    0x00000d3e   0x00000d3e   0x00000002   PAD
+    0x00000d40   0x00000d40   0x00000054   Code   RO           33    .text.SOSC_init_8MHz  clocks_and_modes.o
+    0x00000d94   0x00000d94   0x00000084   Code   RO           35    .text.SPLL_init_160MHz  clocks_and_modes.o
+    0x00000e18   0x00000e18   0x000001ba   Code   RO          107    .text.Seg_out       fnd.o
+    0x00000fd2   0x00000fd2   0x00000002   PAD
+    0x00000fd4   0x00000fd4   0x000000fe   Code   RO          143    .text.SystemCoreClockUpdate  system_s32k144.o
+    0x000010d2   0x000010d2   0x00000002   PAD
+    0x000010d4   0x000010d4   0x00000052   Code   RO          141    .text.SystemInit    system_s32k144.o
+    0x00001126   0x00001126   0x00000002   PAD
+    0x00001128   0x00001128   0x00000030   Code   RO           73    .text.WDOG_disable  io_init.o
+    0x00001158   0x00001158   0x0000003e   Code   RO           41    .text.delay_us      clocks_and_modes.o
+    0x00001196   0x00001196   0x00000002   PAD
+    0x00001198   0x00001198   0x000000a0   Code   RO          124    .text.init_data_bss  startup.o
+    0x00001238   0x00001238   0x00000090   Code   RO            5    .text.main          main.o
+    0x000012c8   0x000012c8   0x0000001a   Code   RO          262    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x000012e2   0x000012e2   0x00000002   PAD
+    0x000012e4   0x000012e4   0x00000020   Data   RO          334    Region$$Table       anon$$obj.o
 
 
     Execution Region VECTOR_RAM (Exec base: 0x1fff8000, Load base: 0x00000230, Size: 0x00000400, Max: 0x00000400, ABSOLUTE)
@@ -814,42 +848,49 @@ Memory Map of the image
     0x1fff8000        -       0x00000400   Zero   RW            1    VECTOR_RAM.bss      anon$$obj.o
 
 
-    Execution Region RW_m_data (Exec base: 0x1fff8400, Load base: 0x00000d60, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+    Execution Region RW_m_data (Exec base: 0x1fff8400, Load base: 0x00001304, Size: 0x0000003c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1fff8400   0x00000d60   0x00000004   Data   RW          128    .data.SystemCoreClock  system_s32k144.o
+    0x1fff8400   0x00001304   0x00000028   Data   RW          109    .data.FND_DATA      fnd.o
+    0x1fff8428   0x0000132c   0x00000010   Data   RW          110    .data.FND_SEL       fnd.o
+    0x1fff8438   0x0000133c   0x00000004   Data   RW          147    .data.SystemCoreClock  system_s32k144.o
 
 
-    Execution Region RW_m_code (Exec base: 0x1fff8404, Load base: 0x00000d64, Size: 0x00000000, Max: 0x00007c00, ABSOLUTE)
-
-    **** No section assigned to this execution region ****
-
-
-    Execution Region RW_m_custom_section (Exec base: 0x20000000, Load base: 0x00000d64, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region RW_m_code (Exec base: 0x1fff843c, Load base: 0x00001340, Size: 0x00000000, Max: 0x00007c00, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region RW_m_data_2 (Exec base: 0x20000000, Load base: 0x00000d64, Size: 0x00000010, Max: 0x00006800, ABSOLUTE)
+    Execution Region RW_m_custom_section (Exec base: 0x20000000, Load base: 0x00001340, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+
+    **** No section assigned to this execution region ****
+
+
+    Execution Region RW_m_data_2 (Exec base: 0x20000000, Load base: 0x00001340, Size: 0x00000024, Max: 0x00006800, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000        -       0x00000004   Zero   RW           86    .bss.Dtime          io_keypad.o
-    0x20000004        -       0x00000001   Zero   RW            7    .bss.key            main.o
-    0x20000005   0x00000d64   0x00000003   PAD
-    0x20000008        -       0x00000004   Zero   RW           43    .bss.lpit0_ch0_flag_counter  clocks_and_modes.o
-    0x2000000c        -       0x00000001   Zero   RW            8    .bss.prevkey        main.o
+    0x20000004        -       0x00000004   Zero   RW          111    .bss.j              fnd.o
+    0x20000008        -       0x00000001   Zero   RW            7    .bss.key            main.o
+    0x20000009   0x00001340   0x00000003   PAD
+    0x2000000c        -       0x00000004   Zero   RW           43    .bss.lpit0_ch0_flag_counter  clocks_and_modes.o
+    0x20000010        -       0x00000004   Zero   RW          115    .bss.num0           fnd.o
+    0x20000014        -       0x00000004   Zero   RW          114    .bss.num1           fnd.o
+    0x20000018        -       0x00000004   Zero   RW          113    .bss.num2           fnd.o
+    0x2000001c        -       0x00000004   Zero   RW          112    .bss.num3           fnd.o
+    0x20000020        -       0x00000001   Zero   RW            8    .bss.prevkey        main.o
 
 
-    Execution Region ARM_LIB_HEAP (Exec base: 0x20000010, Load base: 0x00000d64, Size: 0x00000400, Max: 0x00000400, ABSOLUTE)
+    Execution Region ARM_LIB_HEAP (Exec base: 0x20000024, Load base: 0x00001340, Size: 0x00000400, Max: 0x00000400, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000010        -       0x00000400   Zero   RW            2    ARM_LIB_HEAP.bss    anon$$obj.o
+    0x20000024        -       0x00000400   Zero   RW            2    ARM_LIB_HEAP.bss    anon$$obj.o
 
 
-    Execution Region ARM_LIB_STACK (Exec base: 0x20006c00, Load base: 0x00000d64, Size: 0x00000400, Max: 0x00000400, ABSOLUTE)
+    Execution Region ARM_LIB_STACK (Exec base: 0x20006c00, Load base: 0x00001340, Size: 0x00000400, Max: 0x00000400, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -864,19 +905,20 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        422          0          0          0          4       2433   clocks_and_modes.o
+       592          0          0         56         20       1812   fnd.o
         98          0          0          0          0       1255   io_init.o
-       582          0          0          0          4       1792   io_keypad.o
+      1412          0          0          0          4       2612   io_keypad.o
        108          0          0          0          0       2042   lpuart.o
-       130          0          0          0          2        496   main.o
+       144          0          0          0          2        505   main.o
         78          0          0          0          0        848   midi.o
        160          0          4          0          0       1038   startup.o
        156        106        576          0          0        932   startup_s32k144.o
        336          6          4          4          0       2827   system_s32k144.o
 
     ----------------------------------------------------------------------
-      2082        112        616          4       3088      13663   Object Totals
+      3524        112        616         60       3108      16304   Object Totals
          0          0         32          0       3072          0   (incl. Generated)
-        12          0          0          0          6          0   (incl. Padding)
+        18          0          0          0          6          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -902,8 +944,8 @@ Image component sizes
         26          0          0          0          0        116   fpinit.o
 
     ----------------------------------------------------------------------
-       262         16          0          0          0        400   Library Totals
-         4          0          0          0          0          0   (incl. Padding)
+       264         16          0          0          0        400   Library Totals
+         6          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -913,7 +955,7 @@ Image component sizes
         26          0          0          0          0        116   fz_wm.l
 
     ----------------------------------------------------------------------
-       262         16          0          0          0        400   Library Totals
+       264         16          0          0          0        400   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -922,15 +964,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2344        128        616          4       3088      13991   Grand Totals
-      2344        128        616          4       3088      13991   ELF Image Totals
-      2344        128        616          4          0          0   ROM Totals
+      3788        128        616         60       3108      16612   Grand Totals
+      3788        128        616         60       3108      16612   ELF Image Totals
+      3788        128        616         60          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2960 (   2.89kB)
-    Total RW  Size (RW Data + ZI Data)              3092 (   3.02kB)
-    Total ROM Size (Code + RO Data + RW Data)       2964 (   2.89kB)
+    Total RO  Size (Code + RO Data)                 4404 (   4.30kB)
+    Total RW  Size (RW Data + ZI Data)              3168 (   3.09kB)
+    Total ROM Size (Code + RO Data + RW Data)       4464 (   4.36kB)
 
 ==============================================================================
 

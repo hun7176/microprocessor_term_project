@@ -449,6 +449,16 @@
               <FileType>5</FileType>
               <FilePath>.\midi.h</FilePath>
             </File>
+            <File>
+              <FileName>FND.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FND.c</FilePath>
+            </File>
+            <File>
+              <FileName>FND.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\FND.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

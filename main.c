@@ -4,6 +4,7 @@
 #include "IO_Init.h"
 #include "IO_keypad.h"
 #include "midi.h"
+#include "FND.h"
 
 char key=0;
 char prevkey=0;
@@ -19,6 +20,7 @@ int main(void)
 	KeyScan_init();
 	PORT_init();           /* Configure ports */
   LPUART1_init();        /* Initialize LPUART @ 9600*/
+  FND_init();
 
 
   while(1){
@@ -30,8 +32,9 @@ int main(void)
 
     if (key != 100 && prevkey != key)
       MIDI_NoteOn(key);
+    //LPUART1_transmit_int(key);
+    Seg_out(key);
     prevkey = key;
-
 
 
    }
